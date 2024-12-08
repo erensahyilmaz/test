@@ -1,0 +1,225 @@
+<!-- File: admin.html -->
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Admin Panel - ÇayAl</title>
+   <link rel="stylesheet" href="css/bootstrap.min.css">
+   <link rel="stylesheet" href="css/style.css">
+   <link rel="stylesheet" href="css/admin.css">
+   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+   <!-- Navbar -->
+   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <div class="container">
+         <a class="navbar-brand d-flex align-items-center" href="index.html">
+            <img src="images/unnamed (2).png" alt="ÇayAl Logo" class="mr-2" width="40">
+            <span>ÇayAl Yönetim</span>
+         </a>
+         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+         </button>
+         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav ml-auto">
+               <a class="nav-item nav-link" href="index.html">Ana Sayfa</a>
+               <a class="nav-item nav-link" href="admin.html">Çıkış</a>
+            </div>
+         </div>
+      </div>
+   </nav>
+
+   <!-- Dashboard -->
+   <div class="container mt-4">
+      <h1 class="text-center">Yönetici Paneli</h1>
+      <div class="row mt-5">
+         <!-- Chart Section -->
+         <div class="col-md-6">
+            <div class="card">
+               <div class="card-header">Satış Dağılımı</div>
+               <div class="card-body">
+                  <canvas id="salesChart"></canvas>
+               </div>
+            </div>
+         </div>
+         <div class="col-md-6">
+            <div class="card">
+               <div class="card-header">Kategori Popülerliği</div>
+               <div class="card-body">
+                  <canvas id="categoryChart"></canvas>
+               </div>
+            </div>
+         </div>
+      </div>
+   <!-- Form ve Veri Görüntüleme -->
+<div class="row mt-4">
+   <div class="col-md-6">
+      <div class="card">
+         <div class="card-header">Yeni Çay Ekle</div>
+         <div class="card-body">
+            <form id="teaForm">
+               <div class="form-group">
+                  <label for="teaName">Çay Adı</label>
+                  <input type="text" class="form-control" id="teaName" placeholder="Çay adı girin" required>
+               </div>
+               <div class="form-group">
+                  <label for="category">Kategori</label>
+                  <select class="form-control" id="category" required>
+                     <option value="Siyah Çay">Siyah Çay</option>
+                     <option value="Bitki Çayı">Bitki Çayı</option>
+                     <option value="Aromalı Çay">Aromalı Çay</option>
+                  </select>
+               </div>
+               <div class="form-group">
+                  <label for="price">Fiyat (₺)</label>
+                  <input type="number" class="form-control" id="price" placeholder="Fiyat girin" required>
+               </div>
+               <button type="submit" class="btn btn-primary mt-2">Ekle</button>
+            </form>
+         </div>
+      </div>
+   </div>
+   <div class="col-md-6">
+      <div class="card">
+         <div class="card-header">Çay Listesi</div>
+         <div class="card-body">
+            <table class="table">
+               <thead>
+                  <tr>
+                     <th>#</th>
+                     <th>Çay Adı</th>
+                     <th>Kategori</th>
+                     <th>Fiyat (₺)</th>
+                  </tr>
+               </thead>
+               <tbody id="teaTableBody">
+                  <!-- Dinamik Satırlar Buraya Eklenecek -->
+               </tbody>
+            </table>
+         </div>
+      </div>
+   </div>
+</div>
+
+<script>
+   // Global Variables
+   let teaData = JSON.parse(localStorage.getItem('teaData')) || []; // Yerel depolamadan verileri yükle
+   let salesChart, categoryChart;
+
+   // Sayfa Yüklendiğinde Verileri Yükle
+   document.addEventListener('DOMContentLoaded', function() {
+      loadTable();
+      renderCharts();
+   });
+
+   // Form İşleme
+   document.getElementById('teaForm').addEventListener('submit', function(event) {
+      event.preventDefault();
+
+      // Form Verilerini Al
+      const teaName = document.getElementById('teaName').value;
+      const category = document.getElementById('category').value;
+      const price = Number(document.getElementById('price').value);
+
+      // Yeni Çayı Veri Setine Ekle
+      teaData.push({ teaName, category, price });
+
+      // Verileri Yerel Depolamaya Kaydet
+      localStorage.setItem('teaData', JSON.stringify(teaData));
+
+      // Tablo ve Grafikleri Güncelle
+      loadTable();
+      updateCharts();
+
+      // Formu Temizle
+      document.getElementById('teaForm').reset();
+   });
+
+   // Tabloyu Yeniden Yükle
+   function loadTable() {
+      const teaTableBody = document.getElementById('teaTableBody');
+      teaTableBody.innerHTML = ''; // Önceki verileri temizle
+
+      teaData.forEach((tea, index) => {
+         const newRow = document.createElement('tr');
+         newRow.innerHTML = `
+            <td>${index + 1}</td>
+            <td>${tea.teaName}</td>
+            <td>${tea.category}</td>
+            <td>${tea.price}</td>
+         `;
+         teaTableBody.appendChild(newRow);
+      });
+   }
+
+   // Grafikleri Yükle
+   function renderCharts() {
+      const salesChartCtx = document.getElementById('salesChart').getContext('2d');
+      const categoryChartCtx = document.getElementById('categoryChart').getContext('2d');
+
+      // Kategorilere Göre Dağılım
+      const categoryLabels = ['Siyah Çay', 'Bitki Çayı', 'Aromalı Çay'];
+      const categoryCounts = categoryLabels.map(label => teaData.filter(tea => tea.category === label).length);
+
+      // Fiyat Dağılımı
+      const priceLabels = teaData.map(tea => tea.teaName);
+      const priceData = teaData.map(tea => tea.price);
+
+      // Satış Grafiği
+      salesChart = new Chart(salesChartCtx, {
+         type: 'bar',
+         data: {
+            labels: priceLabels,
+            datasets: [{
+               label: 'Fiyatlar (₺)',
+               data: priceData,
+               backgroundColor: 'rgba(75, 192, 192, 0.6)',
+               borderColor: 'rgba(75, 192, 192, 1)',
+               borderWidth: 1
+            }]
+         }
+      });
+
+      // Kategori Grafiği
+      categoryChart = new Chart(categoryChartCtx, {
+         type: 'pie',
+         data: {
+            labels: categoryLabels,
+            datasets: [{
+               label: 'Kategori Popülerliği',
+               data: categoryCounts,
+               backgroundColor: ['rgba(255, 99, 132, 0.6)', 'rgba(54, 162, 235, 0.6)', 'rgba(255, 206, 86, 0.6)'],
+               borderColor: ['rgba(255, 99, 132, 1)', 'rgba(54, 162, 235, 1)', 'rgba(255, 206, 86, 1)'],
+               borderWidth: 1
+            }]
+         }
+      });
+   }
+
+   // Grafikleri Güncelle
+   function updateCharts() {
+      // Kategorilere Göre Dağılımı Güncelle
+      const categoryLabels = ['Siyah Çay', 'Bitki Çayı', 'Aromalı Çay'];
+      const categoryCounts = categoryLabels.map(label => teaData.filter(tea => tea.category === label).length);
+
+      // Fiyat Dağılımını Güncelle
+      const priceLabels = teaData.map(tea => tea.teaName);
+      const priceData = teaData.map(tea => tea.price);
+
+      // Satış Grafiğini Güncelle
+      salesChart.data.labels = priceLabels;
+      salesChart.data.datasets[0].data = priceData;
+      salesChart.update();
+
+      // Kategori Grafiğini Güncelle
+      categoryChart.data.datasets[0].data = categoryCounts;
+      categoryChart.update();
+   }
+</script>
+
+</body>
+
+</html>

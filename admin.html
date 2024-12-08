@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Admin Giriş - ÇayAl</title>
+   <link rel="stylesheet" href="css/bootstrap.min.css">
+   <link rel="stylesheet" href="css/style.css">
+   <link rel="stylesheet" href="css/login.css">
+</head>
+
+<body>
+   <div class="login-container">
+      <div class="login-box shadow-lg">
+         <h1 class="text-center mb-4">ÇayAl Admin Giriş</h1>
+         <form id="loginForm">
+            <div class="form-group">
+               <label for="email">E-posta</label>
+               <input type="email" id="email" class="form-control" placeholder="E-posta adresinizi girin" required>
+            </div>
+            <div class="form-group">
+               <label for="password">Şifre</label>
+               <input type="password" id="password" class="form-control" placeholder="Şifrenizi girin" required>
+            </div>
+            <div class="d-flex justify-content-between mt-3">
+               <button type="submit" class="btn btn-primary">Giriş Yap</button>
+               <a href="index.html" class="btn btn-secondary">Ana Sayfaya Dön</a>
+            </div>
+            <p id="errorMessage" class="text-danger text-center mt-3" style="display: none;">Hatalı e-posta veya şifre!</p>
+         </form>
+      </div>
+   </div>
+
+   <script>
+      // Kullanıcı doğrulama
+      const validEmail = "201307003@kocaeli.edu.tr";
+      const validPassword = "12345";
+
+      document.getElementById('loginForm').addEventListener('submit', function (event) {
+         event.preventDefault();
+
+         const email = document.getElementById('email').value;
+         const password = document.getElementById('password').value;
+         const errorMessage = document.getElementById('errorMessage');
+
+         // Giriş kontrolü
+         if (email === validEmail && password === validPassword) {
+            window.location.href = "login.html"; // Admin sayfasına yönlendir
+         } else {
+            errorMessage.style.display = "block"; // Hata mesajını göster
+         }
+      });
+   </script>
+</body>
+
+</html>
