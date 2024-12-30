@@ -34,7 +34,7 @@ pekiştirebilen ve restoranın tanıtımını yapmayı amaçlayan bir
 sitedir. Bu projede HTML ve CSS bilgisinin yanı sıra , tasarım
 yapabilme kabiliyeti ölçülmüştür.
 
-#3.SİSTEM TASARIMI VE TEKNOLOJİLER
+# 3.SİSTEM TASARIMI VE TEKNOLOJİLER
 ÇayAl web sitesi, modern web teknolojileri kullanılarak
 geliştirilmiştir. Bu projede kullanılan başlıca teknolojiler aşağıda
 sıralanmıştır:
@@ -49,7 +49,7 @@ CSS framework'ü kullanılmıştır. [4]
 Teab: Websitesinin tasarımı için ThemeWagon üzerindeki Teab
 isimli hazır format kullanılmıştır. [5]
 
-#4. WEB SİTESİ ÖZELLİKLERİ
+# 4. WEB SİTESİ ÖZELLİKLERİ
 ÇayAl web sitesinin kullanıcı deneyimini artırmak amacıyla
 aşağıdaki özellikler geliştirilmiştir:
 4.1. Ürün Kategorileri ve Arama
@@ -73,7 +73,7 @@ sayfanın hızlı yüklenmesi sağlanmıştır.
 Web sitesinin yönetimi için bir admin paneli de oluşturulmuştur.
 Bu panelin içinde chartlar ve grafikler bulunmaktadır.
 
-#5. SONUÇLAR
+# 5. SONUÇLAR
 ÇayAl web sitesi, kullanıcı dostu bir tasarıma sahip olup, çay
 severlere kaliteli bir alışveriş deneyimi sunmaktadır. Site, ürün
 kategorileri ve duyurular ile geniş bir işlevsellik sunmaktadır.
