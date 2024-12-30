@@ -48,6 +48,7 @@ Bootstrap: Hızlı ve duyarlı tasarımlar oluşturmak için Bootstrap
 CSS framework'ü kullanılmıştır. [4]
 Teab: Websitesinin tasarımı için ThemeWagon üzerindeki Teab
 isimli hazır format kullanılmıştır. [5]
+
 #4. WEB SİTESİ ÖZELLİKLERİ
 ÇayAl web sitesinin kullanıcı deneyimini artırmak amacıyla
 aşağıdaki özellikler geliştirilmiştir:
@@ -71,6 +72,7 @@ sayfanın hızlı yüklenmesi sağlanmıştır.
 4.4. Admin Tasarımı
 Web sitesinin yönetimi için bir admin paneli de oluşturulmuştur.
 Bu panelin içinde chartlar ve grafikler bulunmaktadır.
+
 #5. SONUÇLAR
 ÇayAl web sitesi, kullanıcı dostu bir tasarıma sahip olup, çay
 severlere kaliteli bir alışveriş deneyimi sunmaktadır. Site, ürün
