@@ -1,4 +1,4 @@
-## test
+# test
 Bu rapor, Türkiye'nin çay kültürüne odaklanan ve çevrimiçi
 satış yapan ÇayAl web sitesinin geliştirilmesini
 incelemektedir. Projenin amacı, çay severlere kaliteli
@@ -19,7 +19,7 @@ geçmiştir. Gelecekte, mobil uygulama entegrasyonu gibi yeni
 deneyimi sunmayı hedefleyen bir platform olarak önemli bir
 yer edinmektedir. 
 
-## 1.GİRİŞ
+# 1.GİRİŞ
 Günümüzde, internet üzerinden satış yapan işletmelerin sayısı
 hızla artmaktadır. Bu bağlamda, kaliteli ürünleri hızlı ve kolay
 bir şekilde kullanıcılarla buluşturmak önemli bir gereklilik
@@ -28,13 +28,13 @@ dayalı olarak geliştirilmiş olan ÇayAl web sitesi projesini ele
 almaktadır. ÇayAl, kullanıcıların çeşitli çay seçeneklerine
 ulaşabileceği, restoran ile iletişime geçebileceği bir web sitedir.
 
-## 2.PROJE AMACI
+# 2.PROJE AMACI
 ÇayAl web sitesi, kullanıcıların çay ile ilgili fikirlerini
 pekiştirebilen ve restoranın tanıtımını yapmayı amaçlayan bir
 sitedir. Bu projede HTML ve CSS bilgisinin yanı sıra , tasarım
 yapabilme kabiliyeti ölçülmüştür.
 
-## 3.SİSTEM TASARIMI VE TEKNOLOJİLER
+# 3.SİSTEM TASARIMI VE TEKNOLOJİLER
 ÇayAl web sitesi, modern web teknolojileri kullanılarak
 geliştirilmiştir. Bu projede kullanılan başlıca teknolojiler aşağıda
 sıralanmıştır:
@@ -49,31 +49,31 @@ CSS framework'ü kullanılmıştır. [4]
 Teab: Websitesinin tasarımı için ThemeWagon üzerindeki Teab
 isimli hazır format kullanılmıştır. [5]
 
-## 4. WEB SİTESİ ÖZELLİKLERİ
+# 4. WEB SİTESİ ÖZELLİKLERİ
 ÇayAl web sitesinin kullanıcı deneyimini artırmak amacıyla
 aşağıdaki özellikler geliştirilmiştir:
-# 4.1. Ürün Kategorileri ve Arama
+## 4.1. Ürün Kategorileri ve Arama
 ÇayAl, farklı çay türlerini kullanıcıların beğenisine sunmaktadır.
 Kategoriler halinde sıralanan ürünler, kullanıcıların kolayca
 arama yaparak ihtiyaçlarına uygun çayı bulmalarını sağlar.
 Ürünler, fiyat bilgileri ve içerik detayları ile birlikte
 sunulmaktadır.
-# 4.2. Duyurular ve Kampanyalar
+## 4.2. Duyurular ve Kampanyalar
 Web sitesi, kullanıcıların en güncel fırsatlardan haberdar
 olmasını sağlamak için dinamik duyuru ve kampanya alanlarına
 sahiptir. Her duyuru, kullanıcılar tarafından açılabilir ve
 detaylarına ulaşılabilir. Ayrıca, PDF ve Word formatında
 belgelerle kampanya şartları sağlanmaktadır.
-# 4.3. Kullanıcı Dostu Arayüz
+## 4.3. Kullanıcı Dostu Arayüz
 Web sitesinin tasarımı, tüm cihazlarda sorunsuz çalışacak
 şekilde responsive (duyarlı) olarak tasarlanmıştır. Ayrıca,
 kullanıcıların kolayca gezinebileceği bir menü yapısı ve her
 sayfanın hızlı yüklenmesi sağlanmıştır.
-# 4.4. Admin Tasarımı
+## 4.4. Admin Tasarımı
 Web sitesinin yönetimi için bir admin paneli de oluşturulmuştur.
 Bu panelin içinde chartlar ve grafikler bulunmaktadır.
 
-## 5. SONUÇLAR
+# 5. SONUÇLAR
 ÇayAl web sitesi, kullanıcı dostu bir tasarıma sahip olup, çay
 severlere kaliteli bir alışveriş deneyimi sunmaktadır. Site, ürün
 kategorileri ve duyurular ile geniş bir işlevsellik sunmaktadır.
